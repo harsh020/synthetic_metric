@@ -1,5 +1,5 @@
 from .constants import Dtypes
-for .utils import get_density
+from .utils import get_density
 
 __all__ = [
     Dtypes,

@@ -1,6 +1,6 @@
 import numpy as np
 from .base import ModelMetric
-from discriminator.utils import Dtypes
+from synmetric.utils import Dtypes
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor

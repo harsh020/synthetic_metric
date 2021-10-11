@@ -1,9 +1,11 @@
 import numpy as np
 import pandas as pd
+
 from .strategy import CSTestColumnMetricStrategy
 from .strategy import KSTestColumnMetricStrategy
-from discriminator.utils import Dtypes
-from discriminator.metric import BaseMetric
+
+from synmetric.utils import Dtypes
+from synmetric.metric.base import BaseMetric
 
 
 class StatisticalMetric(BaseMetric):
@@ -22,7 +24,7 @@ class StatisticalMetric(BaseMetric):
     """
     def __init__(self, strategy, dtypes):
         self.strategy = strategy
-        self.dtypes = dtype
+        self.dtypes = dtypes
 
     def compute(self, real_data, synthetic_data):
         """
@@ -54,7 +56,7 @@ class CSTestMetric(StatisticalMetric):
     def __init__(self):
         strategy = CSTestColumnMetricStrategy
         dtypes = Dtypes.CATEGORICAL
-        super().__init__(strategy, dtype)
+        super().__init__(strategy, dtypes)
 
 class KSTestMetric(StatisticalMetric):
     """
@@ -63,4 +65,4 @@ class KSTestMetric(StatisticalMetric):
     def __init__(self):
         strategy = KSTestColumnMetricStrategy
         dtypes = Dtypes.NUMERIC
-        super().__init__(strategy, dtype)
+        super().__init__(strategy, dtypes)

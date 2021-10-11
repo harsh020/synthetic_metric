@@ -1,8 +1,6 @@
 from abc import ABC
 import numpy as np
 from .base import ModelMetric
-from sklearn.impute import SimpleImputer
-from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 

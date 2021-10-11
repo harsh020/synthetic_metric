@@ -1,13 +1,12 @@
 import numpy as np
 import pandas as pd
-
 from .base import StatisticalMetric
 from .strategy import CSTestColumnMetricStrategy
 from .strategy import KSTestColumnMetricStrategy
-from rs_discriminator.utils.constants import Dtypes
+from discriminator.utils.constants import Dtypes
 
 
-class TabularMetric(ABC, StatisticalMetric):
+class TabularMetric(StatisticalMetric):
     """
     An abstract class for concrete tabular metrics. Any and all metrics
     to calculate score for tabular data needs to inherit from it.

@@ -1,4 +1,4 @@
-from .metric import CSTestMetric, KSTestMetric
+from .metric.statistical import CSTestMetric, KSTestMetric
 
 __all__ = [
     CSTestMetric,

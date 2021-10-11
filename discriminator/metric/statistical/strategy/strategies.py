@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.stats import chisquare, ks_2samp
 
 from .base import ColumnMetricStrategy
-from rs_discriminator.utils.helpers import get_density
+from discriminator.utils.helpers import get_density
 
 
 class CSTestColumnMetricStrategy(ColumnMetricStrategy):

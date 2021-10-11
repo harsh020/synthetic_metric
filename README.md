@@ -58,6 +58,7 @@ Creating you own new metrics is easy using `synmetric`.
     def __init__(self):
       strategy = CustomColumnMetricStrategy
       dtypes = # put the dtype that the statistical method works on i.e, `Dtypes.CATEGORICAL` or `Dtypes.NUMERIC`.
+      super().__init__(strategy, dtypes)
   ```
   
   3. Use the metric

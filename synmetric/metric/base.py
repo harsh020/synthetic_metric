@@ -1,14 +1,16 @@
 from abc import ABC, abstractmethod
 
-import pandas as pd
 
-class StatisticalMetric(ABC):
+class BaseMetric(ABC):
     """
-    An abstrction of a column metric.
+    An abstract class any type of metrics. Any and all metrics
+     needs to inherit from it.
     """
+    def __call__(self, real, synthetic, **kwargs):
+        return self.compute(real, synthetic, **kwargs)
 
     def _select_dtypes(self, includes, real, synthetic):
-         real_cols = list(real.select_dtypes(includes=inclues).columns)
+         real_cols = list(real.select_dtypes(include=includes).columns)
 
          return real[real_cols], synthetic[real_cols]
 
@@ -21,8 +23,6 @@ class StatisticalMetric(ABC):
         except: #TODO: Remove this wide except and make it a specific one
             raise ValueError("Real and synthetic data do not match")
 
-
-    @classmethod
     @abstractmethod
-    def compute(cls, real_data, synthetic_data):
+    def compute(self, real_data, synthetic_data):
         raise NotImplementedError()

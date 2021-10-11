@@ -1,0 +1,38 @@
+from  abc import ABC, abstractmethod
+from discriminator.utils import Dtypes
+
+class ModelMetric(BaseMetric):
+    """
+    Abstract base class for all model based metric.
+    """
+    def _get_num_cat_columns(self, real_data):
+        cat_cols = list(real.select_dtypes(include=Dtypes.CATEGORICAL).columns)
+        num_cols = list(real.select_dtypes(exclude=Dtypes.NUMERIC).columns)
+
+        return cat_cols, num_cols
+
+    def _preprocess_data(self, real_data, synthetic_data):
+        cat_imputer = SimpleImputer(strategy='most_frequent')
+        num_imputer = SimpleImputer(strategy='median')
+        label_enc = LabelEncoder()
+
+        num_cols, cat_cols = self._get_num_cat_columns(real)
+
+        real_cat, real_num = real[cat_cols], real[num_cols]
+        synthetic_cat, synthetic_num = synthetic[cat_cols], real[num_cols]
+
+        real_cat = cat_imputer.fit_transform(real_cat)
+        real_num = num_imputer.fit_transform(real_num)
+
+        synthetic_cat = cat_imputer.transform(synthetic_cat)
+        synthetic_num = num_imputer.transform(synthetic_num)
+
+        for i in range(real_cat.shape[-1]):
+            encoder = LabelEncoder()
+            real_cat[:, i] = encoder.fit_transform(real_cat[:, i])
+            synthetic_cat[:, i] = encoder.transform(synthetic_cat[:, i])
+
+        real = np.concatenate([real_cat, real_num], axis=1)
+        synthetic = np.concatenate([synthetic_cat, synthetic_num], axis=1)
+
+        return real, synthetic

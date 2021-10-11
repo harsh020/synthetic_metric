@@ -1,12 +1,12 @@
 import numpy as np
 import pandas as pd
-from .base import StatisticalMetric
 from .strategy import CSTestColumnMetricStrategy
 from .strategy import KSTestColumnMetricStrategy
-from discriminator.utils.constants import Dtypes
+from discriminator.utils import Dtypes
+from discriminator.metric import BaseMetric
 
 
-class TabularMetric(StatisticalMetric):
+class StatisticalMetric(BaseMetric):
     """
     An abstract class for concrete tabular metrics. Any and all metrics
     to calculate score for tabular data needs to inherit from it.
@@ -20,11 +20,11 @@ class TabularMetric(StatisticalMetric):
             Defines the datatypes to be used by the strategy, i.e, the type of
             column the column metric will work on.
     """
-    strategy = None
-    dtypes = None
+    def __init__(self, strategy, dtypes):
+        self.strategy = strategy
+        self.dtypes = dtype
 
-    @classmethod
-    def compute(cls, real_data, synthetic_data):
+    def compute(self, real_data, synthetic_data):
         """
         Funciton to compute the score based on the strategy.
 
@@ -36,27 +36,31 @@ class TabularMetric(StatisticalMetric):
         synthetic_data: `pandas.DataFrame`
                          The synthetic dataset.
         """
-        cls._validate_data(real_data, synthetic_data)
+        self._validate_data(real_data, synthetic_data)
 
-        real, synthetic = cls._select_dtypes(cls.dtypes, real_data, synthetic_data)
+        real, synthetic = self._select_dtypes(self.dtypes, real_data, synthetic_data)
 
         vals = []
         for col in real.columns:
-            vals.append(cls.column_metric.compute(real[col], synthetic[col]))
+            vals.append(self.strategy.compute(real[col], synthetic[col]))
 
         return np.nanmean(vals)
 
 
-class CSTestMetric(TabularMetric):
+class CSTestMetric(StatisticalMetric):
     """
     Metric for calculating chi squares test score on given real and synthetic dataframes.
     """
-    strategy = CSTestColumnMetricStrategy
-    dtypes = Dtypes.CATEGORICAL
+    def __init__(self):
+        strategy = CSTestColumnMetricStrategy
+        dtypes = Dtypes.CATEGORICAL
+        super().__init__(strategy, dtype)
 
-class KSTestMetric(TabularMetric):
+class KSTestMetric(StatisticalMetric):
     """
     Metric for calculating Kolmogorov-Smirnov test score on given real and synthetic dataframes.
     """
-    strategy = KSTestColumnMetricStrategy
-    dtypes = Dtypes.NUMERIC
+    def __init__(self):
+        strategy = KSTestColumnMetricStrategy
+        dtypes = Dtypes.NUMERIC
+        super().__init__(strategy, dtype)

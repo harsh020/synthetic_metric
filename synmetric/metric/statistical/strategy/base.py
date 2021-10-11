@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 class ColumnMetricStrategy(ABC):
     """
-    An abstrction of a column metric.
+    An abstrction of a column metric strategy.
     """
 
     @staticmethod

@@ -63,13 +63,13 @@ class KSTestColumnMetricStrategy(ColumnMetricStrategy):
 
         Return
         ------
-        pvalue: float
-                The pvalue of the Kolmogorov-Smirnov test. This value lies between
+        statistic: float
+                The 1 - Kolmogorov-Smirnov statistic. This value lies between
                 (0.0, 1.0). The greater the better.
         """
         real_data = pd.Series(real_data).fillna(0.0)
         synthetic_data = pd.Series(synthetic_data).fillna(0.0)
 
-        _, pvalue = ks_2samp(real_data, synthetic_data)
+        statistic, _ = ks_2samp(real_data, synthetic_data)
 
-        return 1 - pvalue
+        return 1 - statistic

@@ -1,3 +1,7 @@
 */.DSStore
+*/*/.DSStore
+*/*/*/.DSStore
 
 */__pycache__
+*/*/__pycache__
+*/*/*/__pycache__

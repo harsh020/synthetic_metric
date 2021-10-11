@@ -1,7 +1,9 @@
 # synmetric
 A WIP python package to compute quality and privacy of synthetic data.
 
-**_Please not that this is currently a work in progress package. If you find any issues feel free to report them and fix them via a PR_**
+**NOTE**
+**_Please not that this is currently a work in progress package. If you find any issues feel free to report them and fix them via a PR._**
+**_The docstrings are fairly verbose so kindly look at them, if one does not understand something kindly open an issue for the same._**
 
 ## Installation
 - Currently the package is not hosted on `pypy`, so one needs to build from source as - 

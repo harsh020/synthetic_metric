@@ -10,7 +10,7 @@ A WIP python package to compute quality and privacy of synthetic data.
   ```
   
 ## Types of metrics
-- **Statistical Metric:** These metrics are based on test such as `Chi-Squared` and `2 sample Kolmogorov–Smirnov`.
+- **Statistical Metric:** These metrics are based on goodness of fit test such as `Chi-Squared` and `2 sample Kolmogorov–Smirnov`.
 - **Model Metric:** These metrics calculate score by training models.
   - **Discriminator Metric:** These are model metrics that train classification models (currently only `RandomForestClassifier` is supported) to 
     discriminate bewtween synthetic and real data. That is, they tell how hard it is for a ML model to differentiate between real and synthetic data.

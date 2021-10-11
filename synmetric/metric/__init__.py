@@ -1,4 +1,4 @@
-from .model import ClassificationMetric, PrivacyMetric
+from .model import DiscriminatorMetric, PrivacyMetric
 from .model import RFCMetric, RFPrivacyMetric
 
 from .statistical import CSTestMetric, KSTestMetric, StatisticalMetric
@@ -10,5 +10,5 @@ __all__ = [
     PrivacyMetric,
     RFPrivacyMetric,
     StatisticalMetric,
-    ClassificationMetric
+    DiscriminatorMetric
 ]

@@ -7,7 +7,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
 
-class ClassificationMetric(ModelMetric):
+class DiscriminatorMetric(ModelMetric):
     """
     Base class for all metric which calculate classification score by training a model.
 
@@ -66,7 +66,7 @@ class ClassificationMetric(ModelMetric):
         return 1 - score
 
 
-class RFCMetric(ClassificationMetric):
+class RFCMetric(DiscriminatorMetric):
     def __init__(self):
         strategy = RandomForestClassifier
         super().__init__(strategy)

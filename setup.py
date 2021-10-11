@@ -2,7 +2,7 @@ import setuptools
 
 
 setuptools.setup(
-    name="discriminator",
+    name="synmetric",
     version="0.0.1",
     author="Harsh Soni",
     author_email="author@example.com",

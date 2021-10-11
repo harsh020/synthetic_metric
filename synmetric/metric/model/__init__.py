@@ -1,9 +1,9 @@
 from .privacy import PrivacyMetric, RFPrivacyMetric
-from .classification import ClassificationMetric, RFCMetric
+from .classification import DiscriminatorMetric, RFCMetric
 
 __all__ = [
-    ClassificationMetric,
     RFCMetric,
     PrivacyMetric,
     RFPrivacyMetric
+    DiscriminatorMetric,
 ]

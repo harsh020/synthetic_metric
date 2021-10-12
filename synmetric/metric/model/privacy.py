@@ -52,6 +52,9 @@ class PrivacyMetric(ModelMetric):
         Funciton to calculate scores using the models provided to `clf_strategy`
         and `reg_strategy`. The models used will depend on the `dtype` of `target`.
 
+        The models are trained on `synthetic data` to predict certain feature of
+        `real data`.
+
         Args
         ----
         real_data: `pandas.DataFrame`
@@ -83,6 +86,8 @@ class PrivacyMetric(ModelMetric):
             dt = real_data.dtypes
             targets = list(dt.index)
             dtypes = list([d.name for d in dt.values])
+        elif dtypes is None:
+            dtypes = list([d.name for d in real_data[targets].dtypes.values])
 
         scores = dict()
         for target, dtype in zip(targets, dtypes):

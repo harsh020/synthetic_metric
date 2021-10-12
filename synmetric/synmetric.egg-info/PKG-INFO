@@ -1,12 +1,12 @@
 Metadata-Version: 1.2
 Name: synmetric
-Version: 0.1.dev0
+Version: 0.1.dev1
 Summary: Metric to evaluate data quality for synthetic data.
 Home-page: https://github.com/harsh020/synthetic_metric
 Author: Harsh Soni
 Author-email: author@example.com
 License: MIT
-Download-URL: https://github.com/harsh020/synthetic_metric/archive/v_01dev0.tar.gz
+Download-URL: https://github.com/harsh020/synthetic_metric/archive/v_01dev1.tar.gz
 Project-URL: Bug Tracker, https://github.com/harsh020/synthetic_metric/issues
 Description: UNKNOWN
 Platform: UNKNOWN

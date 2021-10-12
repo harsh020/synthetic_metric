@@ -3,13 +3,13 @@ import setuptools
 
 setuptools.setup(
     name="synmetric",
-    version="0.1.dev1",
+    version="0.2.dev0",
     license='MIT',
     author="Harsh Soni",
     author_email="author@example.com",
     description="Metric to evaluate data quality for synthetic data.",
     url="https://github.com/harsh020/synthetic_metric",
-    download_url = 'https://github.com/harsh020/synthetic_metric/archive/v_01dev1.tar.gz',
+    download_url = 'https://github.com/harsh020/synthetic_metric/archive/v_02dev0.tar.gz',
     project_urls={
         "Bug Tracker": "https://github.com/harsh020/synthetic_metric/issues",
     },

@@ -1,5 +1,9 @@
 # synmetric
+
 A WIP python package to compute quality and privacy of synthetic data.
+
+[![pypi package](https://img.shields.io/badge/pypi%20package-0.2dev0-green)](https://test.pypi.org/project/synmetric/)
+[![license](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
 **NOTE**
 - **_Please not that this is currently a work in progress package. If you find any issues feel free to report them and fix them via a PR._**

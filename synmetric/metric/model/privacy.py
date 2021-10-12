@@ -72,8 +72,8 @@ class PrivacyMetric(ModelMetric):
         Returns
         -------
         socres: dict.
-                A dictionary of scores (-ve coefficient of determination) for each
-                target. The values of each score lies between (-1.0, 1.0).
+                A dictionary of -ve of scores of prediction of the respective model,
+                target wise. The values of each score lies between (-1.0, 1.0).
                 The higher the better, it indicates how hard it is for a model to
                 derive the `real` feature provided the `synthetic` one.
         """

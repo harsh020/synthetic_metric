@@ -2,7 +2,7 @@
 
 A WIP python package to compute quality and privacy of synthetic data.
 
-[![pypi package](https://img.shields.io/badge/pypi%20package-0.2dev0-green)](https://test.pypi.org/project/synmetric/)
+[![pypi package](https://img.shields.io/badge/pypi%20package-0.2.dev0-brightgreen)](https://test.pypi.org/project/synmetric/)
 [![license](https://img.shields.io/badge/license-MIT-blue)](https://opensource.org/licenses/MIT)
 
 **NOTE**
@@ -10,12 +10,17 @@ A WIP python package to compute quality and privacy of synthetic data.
 - **_The docstrings are fairly verbose so kindly look at them, if one does not understand something kindly open an issue for the same._**
 
 ## Installation
-- Currently the package is not hosted on `pypy`, so one needs to build from source as - 
-  - Clone this repository, and type the following in terminal
+- Currently the package is hosted on `test pypi`, to install from there do the following:
   ```sh
-  $ cd synthetic_metric
+  $ pip install -i https://test.pypi.org/simple/ synmetric
+  ```
+- To install from source follow the following steps:
+  ```sh
+  $ git clone https://github.com/harsh020/synthetic_metric.git
+  $ cd sythetic_metric
   $ pip install .
   ```
+  **NOTE:** To use the package when installed from source one might need to export the path to the `$PATH` variable.
   
 ## Types of metrics
 - **Statistical Metric:** These metrics are based on goodness of fit test such as `Chi-Squared` and `2 sample Kolmogorov–Smirnov`.

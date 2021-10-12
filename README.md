@@ -1,6 +1,10 @@
 # synmetric
 A WIP python package to compute quality and privacy of synthetic data.
 
+**NOTE**
+- **_Please not that this is currently a work in progress package. If you find any issues feel free to report them and fix them via a PR._**
+- **_The docstrings are fairly verbose so kindly look at them, if one does not understand something kindly open an issue for the same._**
+
 ## Installation
 - Currently the package is not hosted on `pypy`, so one needs to build from source as - 
   - Clone this repository, and type the following in terminal
@@ -10,7 +14,7 @@ A WIP python package to compute quality and privacy of synthetic data.
   ```
   
 ## Types of metrics
-- **Statistical Metric:** These metrics are based on test such as `Chi-Squared` and `2 sample Kolmogorov–Smirnov`.
+- **Statistical Metric:** These metrics are based on goodness of fit test such as `Chi-Squared` and `2 sample Kolmogorov–Smirnov`.
 - **Model Metric:** These metrics calculate score by training models.
   - **Discriminator Metric:** These are model metrics that train classification models (currently only `RandomForestClassifier` is supported) to 
     discriminate bewtween synthetic and real data. That is, they tell how hard it is for a ML model to differentiate between real and synthetic data.
@@ -54,6 +58,7 @@ Creating you own new metrics is easy using `synmetric`.
     def __init__(self):
       strategy = CustomColumnMetricStrategy
       dtypes = # put the dtype that the statistical method works on i.e, `Dtypes.CATEGORICAL` or `Dtypes.NUMERIC`.
+      super().__init__(strategy, dtypes)
   ```
   
   3. Use the metric

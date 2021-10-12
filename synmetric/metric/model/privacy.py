@@ -68,6 +68,14 @@ class PrivacyMetric(ModelMetric):
                 List of dtypes of columns in the same sequence as provided in
                 `targets`. If `targets` is `None` it will automatically be
                 populated for all columns.
+
+        Returns
+        -------
+        socres: dict.
+                A dictionary of scores (-ve coefficient of determination) for each
+                target. The values of each score lies between (-1.0, 1.0).
+                The higher the better, it indicates how hard it is for a model to
+                derive the `real` feature provided the `synthetic` one.
         """
         real_data, synthetic_data = self._validate_data(real_data, synthetic_data)
 
@@ -84,10 +92,10 @@ class PrivacyMetric(ModelMetric):
 
             if dtype in Dtypes.CATEGORICAL:
                 model = self.clf_strategy().fit(X_train, y_train)
-                scores[target] = model.score(X_test, y_test)
+                scores[target] = -model.score(X_test, y_test)
             else:
                 model = self.reg_strategy().fit(X_train, y_train)
-                scores[target] = model.score(X_test, y_test)
+                scores[target] = -model.score(X_test, y_test)
 
         return scores
 

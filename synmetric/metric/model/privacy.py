@@ -29,8 +29,8 @@ class PrivacyMetric(ModelMetric):
         Function to prepocess and prepare dataset to be used by models to calculate
         score.
         """
-        real_data = real_data.dropna(axis=0, subsets=[target])
-        synthetic_data = synthetic_data.dropna(axis=0, subsets=[target])
+        real_data = real_data.dropna(axis=0, subset=[target])
+        synthetic_data = synthetic_data.dropna(axis=0, subset=[target])
 
         real_label = real_data[target]
         synthetic_label = synthetic_data[target]
@@ -45,7 +45,7 @@ class PrivacyMetric(ModelMetric):
             real_label = encoder.fit_transform(real_label)
             synthetic_label = encoder.transform(synthetic_label)
 
-        return synthetic_data, real_data, synthetic_lable, real_label
+        return synthetic_data, real_data, synthetic_label, real_label
 
     def compute(self, real_data, synthetic_data, targets=None, dtypes=None):
         """
@@ -74,11 +74,11 @@ class PrivacyMetric(ModelMetric):
         if targets is None:
             dt = real_data.dtypes
             targets = list(dt.index)
-            dtypes = list(dt.values)
+            dtypes = list([d.name for d in dt.values])
 
         scores = dict()
         for target, dtype in zip(targets, dtypes):
-            X_train, X_test, y_train, y_test = self._preprocess_data(real_data,
+            X_train, X_test, y_train, y_test = self._prepare_dataset(real_data,
                                                                      synthetic_data,
                                                                      target, dtype)
 

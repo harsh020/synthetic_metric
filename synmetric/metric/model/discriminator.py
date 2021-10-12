@@ -25,13 +25,13 @@ class DiscriminatorMetric(ModelMetric):
 
         real, synthetic = self._preprocess_data(real, synthetic)
 
-        real_cls = np.ones((real_cat.shape[0]), )
+        real_label = np.ones((real.shape[0]), )
         real_train_x, real_test_x, real_train_y, real_test_y = train_test_split(
-            real, real_cls, test_size=0.2)
+            real, real_label, test_size=0.2)
 
-        synthetic_cls = np.zeros((synthetic_num.shape[0]), )
+        synthetic_label = np.zeros((synthetic.shape[0]), )
         synthetic_train_x, synthetic_test_x, synthetic_train_y, synthetic_test_y =  train_test_split(
-            synthetic, synthetic_cls, test_size=0.2)
+            synthetic, synthetic_label, test_size=0.2)
 
         X_train = np.concatenate([real_train_x, synthetic_train_x], axis=0)
         y_train = np.concatenate([real_train_y, synthetic_train_y], axis=0)

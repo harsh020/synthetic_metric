@@ -68,3 +68,9 @@ class RFCMetric(DiscriminatorMetric):
     def __init__(self):
         strategy = RandomForestClassifier
         super().__init__(strategy)
+
+
+class SVCMetric(DiscriminatoryMetric):
+    def __init__(self):
+        strategy = svm.SVC
+        super().__init__(strategy)

@@ -1,6 +1,7 @@
 import numpy as np
 from .base import ModelMetric
 from synmetric.utils import Dtypes
+from sklearn import svm
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
@@ -113,5 +114,17 @@ class RFPrivacyMetric(PrivacyMetric):
     def __init__(self):
         clf_strategy = RandomForestClassifier
         reg_strategy = RandomForestRegressor
+
+        super().__init__(clf_strategy, reg_strategy)
+
+
+class SVMPrivacyMetric(PrivacyMetric):
+    """
+    Privacy metric which calculates score using `SVM Regressor` for
+    numericla targets and `SVM Classifier` for categorical targets.
+    """
+    def __init__(self):
+        clf_strategy = svm.SVC
+        reg_strategy = svm.SVR
 
         super().__init__(clf_strategy, reg_strategy)

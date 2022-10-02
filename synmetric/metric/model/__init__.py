@@ -6,6 +6,6 @@ __all__ = [
     SVCMetric,
     PrivacyMetric,
     RFPrivacyMetric,
-    SVMPrivacyMetric
+    SVMPrivacyMetric,
     DiscriminatorMetric,
 ]

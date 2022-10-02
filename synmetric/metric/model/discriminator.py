@@ -1,6 +1,7 @@
 from abc import ABC
 import numpy as np
 from .base import ModelMetric
+from sklearn import svm
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 

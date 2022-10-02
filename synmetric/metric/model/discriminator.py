@@ -2,6 +2,7 @@ from abc import ABC
 import numpy as np
 from .base import ModelMetric
 from sklearn import svm
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
@@ -75,3 +76,8 @@ class SVCMetric(DiscriminatorMetric):
     def __init__(self):
         strategy = svm.SVC
         super().__init__(strategy)
+
+
+class GNBCMetric(DiscriminatorMetric):
+    def __init__(self):
+        strategy = GaussianNB

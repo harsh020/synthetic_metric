@@ -1,6 +1,7 @@
 from abc import ABC
 import numpy as np
 from .base import ModelMetric
+from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
@@ -67,4 +68,10 @@ class DiscriminatorMetric(ModelMetric):
 class RFCMetric(DiscriminatorMetric):
     def __init__(self):
         strategy = RandomForestClassifier
+        super().__init__(strategy)
+
+
+class GNBCMetric(DiscriminatorMetric):
+    def __init__(self):
+        strategy = GaussianNB
         super().__init__(strategy)

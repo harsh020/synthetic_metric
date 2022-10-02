@@ -70,7 +70,7 @@ class RFCMetric(DiscriminatorMetric):
         super().__init__(strategy)
 
 
-class SVCMetric(DiscriminatoryMetric):
+class SVCMetric(DiscriminatorMetric):
     def __init__(self):
         strategy = svm.SVC
         super().__init__(strategy)

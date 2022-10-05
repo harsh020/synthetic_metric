@@ -1,8 +1,9 @@
 from .base import ColumnMetricStrategy
-from .strategies import CSTestColumnMetricStrategy, KSTestColumnMetricStrategy
+from .strategies import *
 
 __all__ = [
     ColumnMetricStrategy,
     CSTestColumnMetricStrategy,
-    KSTestColumnMetricStrategy
+    KSTestColumnMetricStrategy,
+    ANOVATestColumnMetricStrategy
 ]

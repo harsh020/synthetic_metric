@@ -73,3 +73,37 @@ class KSTestColumnMetricStrategy(ColumnMetricStrategy):
         statistic, _ = ks_2samp(real_data, synthetic_data)
 
         return 1 - statistic
+
+
+class ANOVATestColumnMetricStrategy(ColumnMetricStrategy):
+    """
+    Performs the Anderson-Darling test which tests the null hypothesis that a
+    sample is drawn from a population that follows a particular distribution.
+    real and synthetic data and returns 1 - pvalue.
+    """
+
+    @staticmethod
+    def compute(real_data, synthetic_data):
+        """
+        Function to calculate pvalue of oneway ANOVA test for a given
+        continuous column from real and synthetic data.
+
+        Args
+        ----
+        real_data: Union[numpy.array, pandas.Series]
+                   A single dimension data from the real dataset.
+
+        synthetic_data: Union[numpy.array, pandas.Series]
+                        A single dimension data from the synthetic dataset.
+
+        Return
+        ------
+        statistic: float
+                The ANOVA test statistic.
+        """
+        real_data = pd.Series(real_data).fillna(0.0)
+        synthetic_data = pd.Series(synthetic_data).fillna(0.0)
+
+        statistic, _ = f_oneway(real_data, synthetic_data)
+
+        return statistic

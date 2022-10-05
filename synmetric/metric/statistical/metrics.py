@@ -3,6 +3,7 @@ import pandas as pd
 
 from .strategy import CSTestColumnMetricStrategy
 from .strategy import KSTestColumnMetricStrategy
+from .strategy import ANOVATestColumnMetricStrategy
 
 from synmetric.utils import Dtypes
 from synmetric.metric.base import BaseMetric
@@ -64,5 +65,14 @@ class KSTestMetric(StatisticalMetric):
     """
     def __init__(self):
         strategy = KSTestColumnMetricStrategy
+        dtypes = Dtypes.NUMERIC
+        super().__init__(strategy, dtypes)
+
+class ANOVATestMetric(StatisticalMetric):
+    """
+    Metric for calculating ANOVA test score on given real and synthetic dataframes.
+    """
+    def __init__(self):
+        strategy = ANOVATestColumnMetricStrategy
         dtypes = Dtypes.NUMERIC
         super().__init__(strategy, dtypes)

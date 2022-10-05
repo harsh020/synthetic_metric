@@ -99,7 +99,7 @@ class ADTestColumnMetricStrategy(ColumnMetricStrategy):
         Return
         ------
         statistic: float
-                The ANOVA test statistic.
+                The Anderson Test test statistic.
         """
         real_data = pd.Series(real_data).fillna(0.0)
         synthetic_data = pd.Series(synthetic_data).fillna(0.0)

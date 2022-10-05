@@ -4,6 +4,7 @@ import pandas as pd
 from .strategy import CSTestColumnMetricStrategy
 from .strategy import KSTestColumnMetricStrategy
 from .strategy import ANOVATestColumnMetricStrategy
+from .strategy import ADTestColumnMetricStrategy
 
 from synmetric.utils import Dtypes
 from synmetric.metric.base import BaseMetric
@@ -65,6 +66,15 @@ class KSTestMetric(StatisticalMetric):
     """
     def __init__(self):
         strategy = KSTestColumnMetricStrategy
+        dtypes = Dtypes.NUMERIC
+        super().__init__(strategy, dtypes)
+
+class ADTestMetric(StatisticalMetric):
+    """
+    Metric for calculating Anderson-Darling test score on given real and synthetic dataframes.
+    """
+    def __init__(self):
+        strategy = ADTestColumnMetricStrategy
         dtypes = Dtypes.NUMERIC
         super().__init__(strategy, dtypes)
 

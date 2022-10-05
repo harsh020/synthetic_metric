@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from scipy.stats import chisquare, ks_2samp
+from scipy.stats import chisquare, ks_2samp, anderson_ksamp, f_oneway
 
 from .base import ColumnMetricStrategy
 from synmetric.utils import get_density
@@ -75,11 +75,45 @@ class KSTestColumnMetricStrategy(ColumnMetricStrategy):
         return 1 - statistic
 
 
-class ANOVATestColumnMetricStrategy(ColumnMetricStrategy):
+class ADTestColumnMetricStrategy(ColumnMetricStrategy):
     """
     Performs the Anderson-Darling test which tests the null hypothesis that a
     sample is drawn from a population that follows a particular distribution.
-    real and synthetic data and returns 1 - pvalue.
+    real and synthetic data and returns statistic.
+    """
+
+    @staticmethod
+    def compute(real_data, synthetic_data):
+        """
+        Function to calculate pvalue of oneway ANOVA test for a given
+        continuous column from real and synthetic data.
+
+        Args
+        ----
+        real_data: Union[numpy.array, pandas.Series]
+                   A single dimension data from the real dataset.
+
+        synthetic_data: Union[numpy.array, pandas.Series]
+                        A single dimension data from the synthetic dataset.
+
+        Return
+        ------
+        statistic: float
+                The Anderson Test test statistic.
+        """
+        real_data = pd.Series(real_data).fillna(0.0)
+        synthetic_data = pd.Series(synthetic_data).fillna(0.0)
+
+        statistic, _ = anderson_ksamp(real_data, synthetic_data)
+
+        return statistic
+
+
+class ANOVATestColumnMetricStrategy(ColumnMetricStrategy):
+    """
+    Performs the ANOVA test which tests the null hypothesis that a
+    sample is drawn from a population that follows a particular distribution.
+    real and synthetic data and returns statistic.
     """
 
     @staticmethod

@@ -5,5 +5,6 @@ __all__ = [
     ColumnMetricStrategy,
     CSTestColumnMetricStrategy,
     KSTestColumnMetricStrategy,
+    ADTestColumnMetricStrategy,
     ANOVATestColumnMetricStrategy
 ]
